@@ -1,0 +1,36 @@
+{
+  "name": "@acme/shared",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf .turbo",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@acme/db": "workspace:^",
+    "@protoxyz/core": "^2.0.51",
+    "@protoxyz/types": "^2.0.31",
+    "superjson": "1.13.1",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@types/node": "^20.5.6",
+    "eslint": "^8.47.0",
+    "next": "^13.4.19",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  }
+}

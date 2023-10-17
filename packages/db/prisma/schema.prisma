@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum OwnerType {
+  user
+  organization
+}
+
+model Project {
+  id String @id @default(cuid())
+
+  creatorId String?
+  ownerId String? 
+  ownerType OwnerType @default(user)
+
+  name String
+  description String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([creatorId])
+  @@index([ownerId, ownerType]) 
+  @@unique([createdAt])
+}
